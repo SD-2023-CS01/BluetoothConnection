@@ -31,7 +31,8 @@ def connect_to_device():
     return "Connection successful" in output
 
 def play_audio():
-    subprocess.run(["aplay", "./audio.wav"])
+    subprocess.run(["aplay", "./audio_messages/*"])
+    subprocess.run(["rm", "./audio_messages/*"])
 
 def execute_command(command):
     process = subprocess.Popen(["bash", "-c", command], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -64,8 +65,6 @@ def main():
             else:
                 print("Failed to pair the device.")
             
-            
-    
     connect_attempts = 0
     while connect_attempts < MAX_CONNECT_ATTEMPTS:
         if is_device_connected():
