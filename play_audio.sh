@@ -1,4 +1,9 @@
 #! /bin/bash
+# sudo service ssh start
+# pi's ip address = 10.0.0.177
+# sudo apt install pulseaudio-module-bluetooth
+# pulseaudio -k (might not be needed)
+# pulseaudio --start
 
 BLUETOOTH_MAC="F4:2B:7D:1C:17:C6"
 
