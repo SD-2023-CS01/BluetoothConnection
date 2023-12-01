@@ -31,9 +31,13 @@ def connect_to_device():
     return "Connection successful" in output
 
 def play_audio():
-    subprocess.run(["file_name=$(ls /path/to/your/folder/ | head -n 1)"])
-    subprocess.run(["aplay", "./audio_messages/$filename"])
-    subprocess.run(["rm", "./audio_messages/$filename*"])
+    # command = "filename=$(ls ./audio_messages/ | head -n 1)"
+    # output = subprocess.check_output(command, shell=True).decode("utf-8").strip()
+    command = "echo ./audio_messages/*"
+    output = execute_command(command)
+    print(output)
+    subprocess.run(["aplay", f"{output}"])
+    subprocess.run(["rm", f"{output}"])
 
 def execute_command(command):
     process = subprocess.Popen(["bash", "-c", command], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
